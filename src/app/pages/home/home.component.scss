@@ -1,0 +1,330 @@
+@import '../../shared/styles/variables';
+
+%flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%text-style {
+    text-align: center;
+    margin-left: 30px;
+    line-height: 27px;
+}
+
+%before-after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 40px;
+
+    img {
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+
+
+.wrapper {
+    font-family: "RotondaC";
+    width: 100%;
+    margin-top: 50px;
+    @extend %flex;
+    flex-direction: column;
+
+    .line {
+        width: 300px;
+        height: 10px;
+        background-color: $main-color;
+        border-radius: 10px;
+    }
+
+    p {
+        width: 300px;
+        font-size: 38px;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .types-of-products {
+        width: 90%;
+        height: 80px;
+        border-right: none;
+        display: flex;
+        margin-top: 50px;
+
+        .name {
+            width: 15%;
+            height: 100%;
+            border: 1px solid black;
+            border-left: none;
+            @extend %flex;
+            color: rgb(68, 68, 68);
+            cursor: pointer;
+
+            &:first-child {
+                border-top: 4px solid $main-color;
+                border-bottom: none;
+                color: black;
+            }
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+}
+
+.product-cards {
+    font-family: "RotondaC";
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .card {
+        width: 21.5%;
+        height: 480px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 10px;
+        margin: 20px 0px 0px 46px;
+        padding: 65px 15px 0px 15px;
+        position: relative;
+        cursor: pointer;
+
+
+        img {
+            width: 300px;
+            height: 130px;
+        }
+
+        .name {
+            margin: 45px;
+            font-size: 20px;
+            z-index: 2;
+
+            &:hover {
+                color: $main-color;
+            }
+        }
+
+        .info {
+            width: 100%;
+            display: flex;
+
+            .ingredients {
+                width: 80%;
+                height: 50px;
+                line-height: 24px;
+            }
+
+            .weight {
+                width: 20%;
+                height: 50px;
+                line-height: 24px;
+                text-align: right;
+            }
+        }
+
+        .ordering {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+            .price {
+                width: 25%;
+                height: 100%;
+                line-height: 50px;
+            }
+
+            .select-quantity {
+                width: 33%;
+                height: 100%;
+                display: flex;
+                border: 1px solid gray;
+                border-radius: 8px;
+
+                .plus {
+                    width: 30%;
+                    height: 100%;
+                    font-size: 20px;
+                    border-radius: 0px 8px 8px 0px;
+                    cursor: pointer;
+                    background-color: white;
+                    z-index: 2;
+
+                    &:hover {
+                        background-color: $main-color;
+                    }
+                }
+
+                .minus {
+                    width: 30%;
+                    height: 100%;
+                    font-size: 20px;
+                    border-radius: 8px 0px 0px 8px;
+                    cursor: pointer;
+                    background-color: white;
+                    z-index: 2;
+
+                    &:hover {
+                        background-color: $main-color;
+                    }
+                }
+
+                .count {
+                    width: 40%;
+                    height: 100%;
+                    font-size: 20px;
+                    @extend %flex;
+                }
+            }
+
+            .order {
+                width: 27%;
+                height: 100%;
+                border-radius: 8px;
+                border: 3px solid $main-color;
+                background-color: $main-color;
+                font-size: 10px;
+                cursor: pointer;
+                position: relative;
+                z-index: 2;
+
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
+.baner {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "RotondaC";
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .blue {
+    color: aqua;
+  }
+  .after-baner {
+    width: 100%;
+    height: 150px;
+    background-color: #b5d8f7;
+    background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg),
+      url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+    background-position: 0 0, 190px -52px;
+    display: flex;
+    font-family: "RotondaC";
+  }
+  .column {
+    width: 34%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 120px;
+      height: 90px;
+    }
+  }
+  
+  .mini-column {
+    height: 80%;
+    width: 80%;
+    border-right: 1px solid white;
+    display: flex;
+    align-items: center;
+  }
+  .zonaBtn {
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    width: 200px;
+    height: 60px;
+    border: 1px solid white;
+    font-weight: bold;
+    transition: background-color 0.6s;
+  }
+  .zonaBtn:hover {
+    background-color: transparent;
+  }
+  .text {
+    font-size: 18px;
+    font-weight: 400;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .maker {
+    border-right: 1px solid transparent;
+  }
+  .btn-det {
+    background-color: aqua;
+    width: 160px;
+    height: 50px;
+    color: black;
+    border-radius: 8px;
+    border: 1px solid aqua;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.7s;
+  }
+  .btn-det:hover {
+    background-color: white;
+    box-shadow: 0 0 5px aqua;
+  }
+  .inner-baner {
+    align-self: center;
+  }
+  .inner-baner p {
+    font-weight: 400;
+  }
+  .inner-baner2 img {
+    border-radius: 2px;
+  }
+
+
+  .card:hover {
+    animation: slideIn 1s forwards;
+  }
+  
+  @keyframes slideIn {
+    20% {
+      border-top: 3px solid aqua;
+    }
+    40% {
+      border-right: 3px solid aqua;
+    }
+    60% {
+      border-bottom: 3px solid aqua;
+    }
+    80% {
+      border-left: 3px solid aqua;
+    }
+    100% {
+      border: 3px solid aqua;
+    }
+  }

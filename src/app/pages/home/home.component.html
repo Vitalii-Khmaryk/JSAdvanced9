@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="baner">
+        <div class="inner-baner">
+        <h1>Ми це доставка <span class="blue">щастя</span></h1>
+        <h1> <span class="blue">Monosushi</span> - Ми любимо коли</h1>
+        <h1>тобі смачно.</h1>
+        <br>
+        <p>Найсмачніші сушики вже чекають на тебе.Не барись, а обирай свої</p>
+        <p>улюблені позиції і вже скоро вони будуть у тебе</p>
+        <br>
+        <button class="btn-det">ДЕТАЛЬНІШЕ</button>
+        </div>
+        <div class="inner-baner2">
+            <img src="../../../assets/images/sushi.avif">
+        </div>
+        </div>
+</div>
+
+
+
+<div class="after-baner">
+    <div class="column">
+        <div class="mini-column">
+            <img src="../../../assets/images/mn-delivery-img.svg">
+        <button class="zonaBtn">ЗОНИ ДОСТАВКИ</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="mini-column">
+            <img src="../../../assets/images/mono-supermen.svg" class="img2">
+        <div class="text">
+         <p>Середній час доставки в</p>
+         <p style="text-align: center;">зеленій зоні <b>00:43:00</b></p>
+        </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="mini-column maker">
+            <img src="../../../assets/images/mono-bonus.svg" class="img2">
+        <div class="text">
+         <p style="text-align: center;">Наш графік роботи</p>
+         <p>Працюємо з <b>11:00</b> до <b>23:59</b></p>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="wrapper">
+    <div>
+        <div class="line"></div>
+        <p>Роли</p>
+    </div>
+    <div class="types-of-products">
+        <div class="name"><b>Всі</b></div>
+        <div class="name"><b>Філадельфія</b></div>
+        <div class="name"><b>Каліфорнія</b></div>
+        <div class="name"><b>Запечені</b></div>
+        <div class="name"><b>Фірмові</b></div>
+        <div class="name"><b>Макі</b></div>
+        <div class="name"><b>Преміум</b></div>
+    </div>
+</div>
+<div class="product-cards">
+    <div class="card" *ngFor="let data of rolls">
+        <img [src]="data.imagePath">
+        <p class="name"><b>{{data.name}}</b></p>
+        <div class="info">
+            <p class="ingredients">{{data.ingredients}}</p>
+            <p class="weight"><b>{{data.weight}}</b></p>
+        </div>
+        <div class="ordering">
+            <p class="price"><b>{{data.price}}</b></p>
+            <div class="select-quantity">
+                <button class="minus">-</button>
+                <div class="count">1</div>
+                <button class="plus">+</button>
+            </div>
+            <button class="order"><b>ЗАМОВИТИ</b></button>
+        </div>
+    </div>
+</div>

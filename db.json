@@ -1,0 +1,92 @@
+{
+  "actions": [
+    {
+      "date": "2023-03-16T15:04:08.235Z",
+      "name": "РОЛ ТИЖНЯ",
+      "title": "РОЛ ТИЖНЯ",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню.\n“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 300 грн.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=a25181c3-774d-4105-9eb6-1fdb464c42cf",
+      "id": 1
+    },
+    {
+      "date": "2023-03-16T15:04:08.235Z",
+      "name": "3+1=5",
+      "title": "3+1=5",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=d876f4cc-d057-4f50-a00a-8d832547369f",
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "name": "Роли",
+      "path": "rolls",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=2b76db2e-06b7-48bc-a339-e46b3425260b",
+      "id": 1
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=ccb80ccd-81c3-4a2e-b734-6442697db12c",
+      "id": 2
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=94f1f035-7f7b-4c3d-aafd-26e715326c6b",
+      "id": 3
+    },
+    {
+      "name": "Соуси",
+      "path": "sauces",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Ficon.svg?alt=media&token=3e74d65c-a0d5-4ae1-972a-fc2622f56190",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "category": "Роли",
+      "name": "Фелікс з лососем",
+      "path": "feliks-z-lososem",
+      "ingredients": "Рис, крем сир, авокадо, салат айсберг, кунжут, лосось, спайсі соус",
+      "weight": "300 г",
+      "price": "141 грн",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2F5.-feliks-z-lososem.jpg?alt=media&token=64066f3c-3c7a-4bd0-975b-090c124ec484",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "category": "Роли",
+      "name": "Філадельфія з лососем",
+      "path": "filadelfiya-z-lososem",
+      "ingredients": "Риc, крем сир, огірок, лосось",
+      "weight": "280 г",
+      "price": "247 грн",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=9f40fe62-16e7-4cf5-8b37-017a829646e2",
+      "count": null,
+      "id": 2
+    },
+    {
+      "category": "Роли",
+      "name": "Філадельфія в кунжуті",
+      "path": "filadelfiya-z-kunzhuti",
+      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
+      "weight": "240 г",
+      "price": "228 грн",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2F2.-filadelfiya-v-kunzhuti.jpg?alt=media&token=02d34ade-65cd-4d99-bf31-d90a541ac289",
+      "count": null,
+      "id": 3
+    },
+    {
+      "category": "Роли",
+      "name": "Запечений сирний з креветкою",
+      "path": "rolls",
+      "ingredients": "Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
+      "weight": "123",
+      "price": "333",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-283e1.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg.pagespeed.ce.ySjaJht9cw.jpg?alt=media&token=794848aa-4e8b-4181-8e17-bf63e2ea950f",
+      "count": 1,
+      "id": 4
+    }
+  ]
+}

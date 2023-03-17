@@ -1,0 +1,62 @@
+<div class="header">
+    <nav class="wrapper">
+        <div class="header-logo" [routerLink]="[ '' ]">
+            <img src="../../../assets/images/logo.svg">
+        </div>
+        <div class="category-btn">
+            <div class="header-button" [routerLink]="[ '/actions' ]">
+                <img src="../../../assets/images/nav-img-gift.svg">
+                <p>Акції</p>
+            </div>
+            <div class="header-button" [routerLink]="[ '/product-category/rolls' ]">
+                <img src="../../../assets/images/nav-img-rolls.svg">
+                <p>Роли</p>
+            </div>
+            <div class="header-button" [routerLink]="[ '/product-category/sets' ]">
+                <img src="../../../assets/images/nav-img-sets.svg">
+                <p>Сети</p>
+            </div>
+            <div class="header-button" [routerLink]="[ '/product-category/drinks' ]">
+                <img src="../../../assets/images/nav-img-drinks.svg">
+                <p>Напої</p>
+            </div>
+            <div class="header-button" [routerLink]="[ '/product-category/sauces' ]">
+                <img src="../../../assets/images/icon.svg">
+                <p>Соуси</p>
+            </div>
+            <div class="header-button burger-btn" (click)="showSloceMenu()">
+                <img src="../../../assets/images/new_Hamburger_icon.svg.png" class="burger">
+            </div>
+            <div [@showCloseMenu]="status ? 'show' : 'close'" class="modal-menu">
+                <div class="close" (click)="showSloceMenu()">✖</div>
+                <div class="link" [routerLink]="[ '/dostavka-ta-oplata' ]" (click)="showSloceMenu()"><b>Доставка та
+                        оплата</b></div>
+                <div class="link" [routerLink]="[ '/about-us' ]" (click)="showSloceMenu()"><b>Про нас</b></div>
+                <div class="link" [routerLink]="[ '/actions' ]" (click)="showSloceMenu()"><b>Акції</b></div>
+            </div>
+        </div>
+    </nav>
+    <div class="callback">
+        <div class="wrapper">
+            <img src="../../../assets/images/phone.svg">
+            <p>МИ ЗАТЕЛЕФОНУЄМО</p>
+        </div>
+    </div>
+    <div class="contact">
+        <p class="number"><b>(097) 878 08 37</b></p>
+        <p class="schedule">Працюємо з <b>11:00</b> до <b>23:59</b>
+        </p>
+    </div>
+    <div class="user-icon" [routerLink]="[ '/admin' ]">
+        <div class="wrapper anim">
+            <img src="../../../assets/images/user.svg">
+        </div>
+    </div>
+    <div class="basket">
+        <div class="wrapper">
+            <img src="../../../assets/images/basket.svg">
+            <p><b>0</b> грн</p>
+            <div class="count">0</div>
+        </div>
+    </div>
+</div>

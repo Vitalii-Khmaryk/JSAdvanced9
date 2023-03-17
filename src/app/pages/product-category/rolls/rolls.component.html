@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div>
+        <div class="line"></div>
+        <p>Роли</p>
+    </div>
+    <div class="types-of-products">
+        <div class="name"><b>Всі</b></div>
+        <div class="name"><b>Філадельфія</b></div>
+        <div class="name"><b>Каліфорнія</b></div>
+        <div class="name"><b>Запечені</b></div>
+        <div class="name"><b>Фірмові</b></div>
+        <div class="name"><b>Макі</b></div>
+        <div class="name"><b>Преміум</b></div>
+    </div>
+</div>
+<div class="product-cards">
+    <div class="card" *ngFor="let data of rolls">
+        <img [src]="data.imagePath">
+        <p class="name"><b>{{data.name}}</b></p>
+        <div class="info">
+            <p class="ingredients">{{data.ingredients}}</p>
+            <p class="weight"><b>{{data.weight}}</b></p>
+        </div>
+        <div class="ordering">
+            <p class="price"><b>{{data.price}}</b></p>
+            <div class="select-quantity">
+                <button class="minus">-</button>
+                <div class="count">1</div>
+                <button class="plus">+</button>
+            </div>
+            <button class="order"><b>ЗАМОВИТИ</b></button>
+        </div>
+    </div>
+</div>

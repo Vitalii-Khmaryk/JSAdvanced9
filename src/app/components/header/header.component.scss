@@ -1,0 +1,244 @@
+@import '../../shared/styles/variables';
+
+%before-after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+%flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    font-family: "RotondaC";
+    width: 100%;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    left: 0;
+    top: 0;
+    background-color: white;
+    z-index: 99;
+
+    .wrapper {
+        display: flex;
+        height: 100%;
+
+        .header-logo {
+            width: 220px;
+            height: 100%;
+            @extend %flex;
+            background-color: $main-color;
+            cursor: pointer;
+        }
+
+        .category-btn {
+            width: 640px;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+
+           
+
+            .burger-btn {
+                width: 68px;
+                height: 68px;
+                margin-left: 30px;
+
+                .burger {
+                    width: 30px;
+                    height: 35px;
+                }
+            }
+
+            .modal-menu {
+                position: absolute;
+                width: 270px;
+                height: 300px;
+                border: 3px solid $main-color;
+                top: 0;
+                bottom: 0;
+                left: 545px;
+                right: 0;
+                background-color: white;
+                border-radius: 8px;
+                z-index: 2;
+                padding: 30px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .close {
+                width: 200px;
+                height: 48px;
+                font-size: 26px;
+                @extend %flex;
+                justify-content: left;
+                padding-left: 20px;
+                cursor: pointer;
+            }
+
+            .link {
+                width: 200px;
+                height: 48px;
+                font-size: 14px;
+                @extend %flex;
+                justify-content: left;
+                border-radius: 10px;
+                padding-left: 20px;
+                cursor: pointer;
+
+                &:hover {
+                    outline: 2px solid $main-color;
+                }
+            }
+        }
+    }
+
+    .callback {
+        width: 250px;
+        height: 100%;
+        @extend %flex;
+        margin-left: 20px;
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            background-color: $main-color;
+            border-radius: 8px;
+            border: 2px solid $main-color;
+            width: 210px;
+            height: 50px;
+            padding: 15px;
+            cursor: pointer;
+
+            img {
+                height: 25px;
+            }
+
+            p {
+                font-weight: bold;
+                margin-left: 20px;
+                font-size: 14px;
+            }
+
+            &:hover {
+                background-color: white;
+            }
+        }
+    }
+
+    .contact {
+        width: 210px;
+        height: 100%;
+        @extend %flex;
+        flex-direction: column;
+
+        .schedule {
+            font-size: 13px;
+        }
+    }
+
+    .user-icon {
+        width: 80px;
+        height: 100%;
+        @extend %flex;
+        cursor: pointer;
+
+        .wrapper {
+            width: 60px;
+            height: 60px;
+            @extend %flex;
+            position: relative;
+             border-radius: 8px;
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .basket {
+        width: 180px;
+        height: 100%;
+        @extend %flex;
+        background-color: $main-color;
+
+        .wrapper {
+            @extend %flex;
+            position: relative;
+
+            img {
+                width: 45px;
+            }
+
+            p {
+                margin-left: 20px;
+            }
+
+            .count {
+                position: absolute;
+                @extend %flex;
+                width: 30px;
+                height: 30px;
+                background-color: white;
+                border-radius: 100%;
+                top: 36px;
+                left: 25px;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.header-button {
+    border-radius: 8px;
+    transition: border-top 0.7s ease-out;
+    width: 100px;
+    height: 90px;
+    flex-direction: column;
+    @extend %flex;
+    cursor: pointer;
+    position: relative;
+    p {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 5px;
+    }
+}
+
+.header-button:hover {
+    animation: slideIn 1s forwards;
+  }
+  .anim:hover {
+    animation: slideIn 1s forwards;
+  }
+  
+  @keyframes slideIn {
+    20% {
+      border-top: 3px solid aqua;
+    }
+    40% {
+      border-right: 3px solid aqua;
+    }
+    60% {
+      border-bottom: 3px solid aqua;
+    }
+    80% {
+      border-left: 3px solid aqua;
+    }
+    100% {
+      border: 3px solid aqua;
+    }
+  }
