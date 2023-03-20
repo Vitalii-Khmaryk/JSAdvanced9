@@ -1,0 +1,13 @@
+<ul >
+    <li [routerLink]="['/']">Головна</li>
+    <li [routerLink]="['/actions']">Акції</li>
+    <li>{{currentAction.name}}</li>
+</ul>
+<div class="container">
+   <div class="baner">
+      <h1 class="h1-title">{{currentAction.title}}</h1>
+   </div>
+   <div class="text">
+    <p>{{currentAction.description}}</p>
+   </div>
+</div>

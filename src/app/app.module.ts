@@ -29,6 +29,9 @@ import { AdminActionsComponent } from './admin/admin-actions/admin-actions.compo
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     AdminCategoryComponent,
     AdminOrderComponent,
     AdminProductComponent,
-    AdminActionsComponent
+    AdminActionsComponent,
+    ProductInfoComponent,
+    ActionsInfoComponent
   ],
   imports: [
     BrowserModule,

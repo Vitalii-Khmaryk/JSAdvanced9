@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProductResponce } from 'src/app/shared/interfaces/product/product.interface';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -12,7 +13,8 @@ export class RollsComponent {
   public rolls: IProductResponce[] = [];
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private actvatedRoute:ActivatedRoute
   ){}
 
   ngOnInit(): void {
@@ -20,7 +22,8 @@ export class RollsComponent {
   }
 
   getRolls(): void{
-    this.productService.getAll().subscribe(data => {
+    const categoryName=this.actvatedRoute.snapshot.paramMap.get('') as string;
+    this.productService.getAllByCategory(categoryName).subscribe(data => {
       this.rolls = data;
     })
   }

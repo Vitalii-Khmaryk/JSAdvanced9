@@ -14,8 +14,8 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class AdminProductComponent {
 
-  public adminCategories!: ICategoryResponce[];
-  public adminProducts!: IProductResponce[];
+  public adminCategories: ICategoryResponce[]=[];
+  public adminProducts: IProductResponce[]=[];
 
   public productForm!: FormGroup;
 
@@ -68,6 +68,7 @@ export class AdminProductComponent {
       })
     })
   }
+  
 
   addProduct(): void {
     this.addProductStatus = !this.addProductStatus;

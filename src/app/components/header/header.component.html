@@ -52,11 +52,56 @@
             <img src="../../../assets/images/user.svg">
         </div>
     </div>
-    <div class="basket">
+    <div class="basket" (click)="showBasket()">
         <div class="wrapper">
             <img src="../../../assets/images/basket.svg">
-            <p><b>0</b> грн</p>
-            <div class="count">0</div>
+            <p><b>{{total}}</b> грн</p>
+            <div class="count">{{count}}</div>
         </div>
     </div>
+    
 </div>
+
+<ng-container *ngIf="blurStatus">
+<div class="blur">
+    <div class="basket-container">
+
+       <ng-container *ngIf="empty">
+        <div class="empty">
+                <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="...">
+                <h2>Кошик порожній</h2>
+                <button class="catalogBtn" (click)="catalog()" [routerLink]="[ '' ]">ПЕРЕЙТИ ДО КАТАЛОГУ</button>
+        </div>
+    </ng-container>
+
+        <ng-container *ngIf="!empty">
+        
+        <div class="top-basket"  *ngFor="let item of basket" >
+            <div >
+            <img [src]="item.imagePath" height="50px" alt="...">
+            </div>
+            <div class="name">{{item.name}}</div>
+            <div class="select-quantity">
+                <button class="minus" (click)="productCount(item,false)">-</button>
+                <input type="text" name="num" disabled style="background-color: white;" class="count" [value]="item.count">
+                <button class="plus" (click)="productCount(item,true)">+</button>
+            </div>
+            <div class="sum"><b>{{item.price * item.count}}</b> грн</div>
+            <div class="trash" (click)="localDelete(item)">
+                <img src="../../../assets/images/trash.svg" alt="">
+            </div>
+        </div>
+    </ng-container>
+
+
+        <div class="bottom-basket" >
+            <div class="suma">
+                Сума: <b>{{total}}</b> грн
+            </div>
+            <div>
+                <button class="orderbtn">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</ng-container>

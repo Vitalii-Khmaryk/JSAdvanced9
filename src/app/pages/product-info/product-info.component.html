@@ -1,0 +1,32 @@
+<ul >
+    <li [routerLink]="['/']">Головна</li>
+    <li [routerLink]="['/product-category/'+currentProduct.category.path]">{{currentProduct.category.name}}</li>
+    <li>{{currentProduct.name}}</li>
+</ul>
+
+<div class="product-cards">
+    <div class="card" >
+        <div class="image">
+        <img [src]="currentProduct.imagePath" >
+        </div>
+        <div class="inform">
+        <p class="name" ><b>{{currentProduct.name}}</b></p>
+        <br>
+        <div class="info">
+            <p class="ingredients"><span style="color: aqua;"><b>Склад:</b></span> {{currentProduct.ingredients}}</p>
+            <br>
+            <p class="weight"><b><span style="color: aqua;">Вага:</span> {{currentProduct.weight}}</b></p>
+        </div>
+        <div class="ordering">
+            <p class="price"><b>{{currentProduct.price * currentProduct.count}} грн</b></p>
+            <div class="select-quantity">
+                <button (click)="productCount(currentProduct,false)" class="minus">-</button>
+                <input type="text" name="num" disabled style="background-color: white;" class="count" [value]="currentProduct.count">
+                <button (click)="productCount(currentProduct,true)" class="plus">+</button>
+            </div>
+            <button class="order" (click)="addToBasket(currentProduct)"><b>ЗАМОВИТИ</b></button>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -2,7 +2,7 @@
     <button class="create" (click)="addProduct()"><b>ДОДАТИ ТОВАР</b></button>
     <form [formGroup]="productForm" class="add" *ngIf="addProductStatus" (ngSubmit)="saveNewProduct()">
         <select name="select-category" formControlName="category">
-            <option [ngValue]="category.name" *ngFor="let category of adminCategories">{{category.name}}</option>
+            <option [ngValue]="category" *ngFor="let category of adminCategories">{{category.name}}</option>
         </select>
         <div>
             <input formControlName="name" name="name" class="name" type="text" placeholder="*Назва">
@@ -11,7 +11,7 @@
         <input formControlName="ingredients" name="ingredients" class="ingredients" type="text" placeholder="*Інгредієнти">
         <div>
             <input formControlName="weight" name="weight" class="weight" type="text" placeholder="*Вага">
-            <input formControlName="price" name="price" class="price" type="text" placeholder="*Ціна">
+            <input formControlName="price" name="price" class="price" type="number" placeholder="*Ціна">
         </div>
         <div class="add-img">
             <input name="file" id="file" type="file" (change)="upload($event)">
@@ -39,7 +39,7 @@
         <tbody>
             <tr *ngFor="let data of adminProducts">
                 <td></td>
-                <td>роли</td>
+                <td>{{data.category.name}}</td>
                 <td>{{data.name}}</td>
                 <td>{{data.ingredients | slice:0:30}}
                     <span *ngIf="data.ingredients.length > 30">...</span>
