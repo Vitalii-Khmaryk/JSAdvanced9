@@ -22,6 +22,10 @@ import { ProductService } from './shared/services/product/product.service';
 
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { ActionService } from './shared/services/action/action.service';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
+
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -42,7 +46,9 @@ const routes: Routes = [
   resolve:{
     productInfo:ProductService
   }},
-  {path: 'admin', component: AdminComponent, children: [
+  {path:'auth',component:AuthorizationComponent},
+  {path:'cabinet',component:CabinetComponent,canActivate:[AuthGuard]},
+  {path: 'admin', component: AdminComponent,canActivate:[AuthGuard] ,children: [
     {path: 'category', component: AdminCategoryComponent},
     {path: 'order', component: AdminOrderComponent},
     {path: 'product', component: AdminProductComponent},

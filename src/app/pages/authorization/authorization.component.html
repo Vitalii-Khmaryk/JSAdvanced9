@@ -1,0 +1,9 @@
+<div class="container">
+    <form [formGroup]="authForm" class="add" (ngSubmit)="login()">
+        <div class="wrapper">
+        <input formControlName="email" name="email" type="email" placeholder="*Email">
+        <input formControlName="password" name="password" type="password" placeholder="*Password">
+        <button [disabled]="authForm.invalid" class="submiter" type="submit"><b>Login</b></button>
+        </div>
+    </form>
+</div>

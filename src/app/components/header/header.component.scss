@@ -28,7 +28,7 @@
     left: 0;
     top: 0;
     background-color: white;
-    z-index: 96;
+    z-index: 56;
 
     .wrapper {
         display: flex;
@@ -174,7 +174,8 @@
         width: 180px;
         height: 100%;
         @extend %flex;
-        background-color: $main-color;
+        background-color: white;
+        position: relative;
 
         .wrapper {
             @extend %flex;
@@ -200,7 +201,9 @@
                 font-size: 15px;
             }
         }
+       
     }
+   
 }
 
 .header-button {
@@ -250,7 +253,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,.8);
-    z-index: 95;
+    z-index: 55;
 }
 .basket-container{
     width: 700px;
@@ -260,7 +263,7 @@
     position: absolute;
     top: 95px;
     right: 0;
-    z-index: 99;
+    z-index: 59;
     font-family: 'RotondaC';
 }
 .top-basket{
@@ -365,4 +368,19 @@
 .catalogBtn:hover{
     border: 1px solid $main-color;
     background-color: white;
+}
+
+.basket::after{
+    content: "";
+    background-color: $main-color;
+    bottom: 0;
+    width: 160px;
+    height: 95px;
+    position: absolute;
+    z-index: 29;
+    transition: 0.7s height;
+}
+
+.basket:hover::after {
+    height: 10px;
 }

@@ -47,16 +47,30 @@
         <p class="schedule">Працюємо з <b>11:00</b> до <b>23:59</b>
         </p>
     </div>
-    <div class="user-icon" [routerLink]="[ '/admin' ]">
+    <ng-container *ngIf="!isLogin">
+    <div class="user-icon" [routerLink]="[ '/auth' ]">
         <div class="wrapper anim">
             <img src="../../../assets/images/user.svg">
         </div>
     </div>
+    </ng-container>
+    <ng-container *ngIf="isLogin">
+    <div class="user-icon" [routerLink]="[ '/'+loginUrl ]">
+        <div class="wrapper anim" style="display: flex;flex-direction: column;">
+            <div>
+            <img src="../../../assets/images/user.svg">
+            </div>
+            <h6>{{loginPage}}</h6>
+        </div>
+    </div>
+    </ng-container>
+
+
     <div class="basket" (click)="showBasket()">
-        <div class="wrapper">
-            <img src="../../../assets/images/basket.svg">
-            <p><b>{{total}}</b> грн</p>
-            <div class="count">{{count}}</div>
+        <div class="wrapper" >
+            <img src="../../../assets/images/basket.svg" style="z-index: 50;">
+            <p style="z-index: 50;"><b>{{total}}</b> грн</p>
+            <div class="count" style="z-index: 50;">{{count}}</div>
         </div>
     </div>
     

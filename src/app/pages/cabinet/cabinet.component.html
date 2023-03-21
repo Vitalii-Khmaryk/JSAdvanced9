@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="panel">
+            <button class="btn" [ngClass]="{'active': dataVar}" (click)="data()">Особисті дані</button>
+            <button class="btn" [ngClass]="{'active': historyVar}" (click)="history()">Історія замовлень</button>
+            <button class="btn" (click)="logout()">Вихід</button>
+        </div>
+        <div class="forma">
+            <ng-container *ngIf="dataVar">
+              <form >
+                 <h3> <span class="spanNum">1</span> Особисті дані</h3>
+                 <input type="text" placeholder="*Ваше ім'я" [value]="userName" class="userinp">
+                 <input type="text" placeholder="*Ваш номер телефону" class="userinp">
+                 <input type="email" placeholder="*Ваш емаіл" class="inp" [value]="userEmail">
+                 <input type="text" class="inp" [value]="userPass">
+                 <h3 style="margin-top: 20px;"> <span class="spanNum">2</span> Адреси</h3>
+                 <div class="d-flex">
+                    <button class="btnAqua2">Додати адресу</button>
+                    <button class="btnAqua">Зберегти</button>
+                 </div>
+              </form>
+              </ng-container>
+              <ng-container *ngIf="historyVar">
+                <div style="margin-top: 50px;">
+                   <h3>Поки що ви не зробили жодного замовлення <span class="spanCatalog" [routerLink]="[ '' ]">перейти в каталог</span></h3>
+                </div>
+              </ng-container>
+        </div>
+    </div>
+</div>
