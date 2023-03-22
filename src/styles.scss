@@ -1,5 +1,5 @@
 @import "ngx-toastr/toastr";
-
+@import "app/shared/styles/theme-material";
 *,
 *:before,
 *:after {
@@ -28,3 +28,5 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:vertical {
   height: 10px;
 }
+
+

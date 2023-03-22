@@ -96,7 +96,7 @@ export class AdminActionsComponent {
   deleteAction(action: IActionResponse): void {
     this.actionService.deleteAction(action.id).subscribe(() => {
       this.getActions();
-      this.toastr.success('The product has been successfully removed');
+      this.toastr.success('The action has been successfully removed');
     });
   }
 

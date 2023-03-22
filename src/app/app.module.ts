@@ -26,15 +26,23 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +65,8 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     ProductInfoComponent,
     ActionsInfoComponent,
     AuthorizationComponent,
-    CabinetComponent
+    CabinetComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +77,10 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideFirestore(()=>getFirestore()),
+    provideAuth(()=>getAuth()),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

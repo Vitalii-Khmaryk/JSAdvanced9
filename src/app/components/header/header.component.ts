@@ -10,6 +10,8 @@ import { IProductResponce } from 'src/app/shared/interfaces/product/product.inte
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 const showCloseMenu = trigger('showCloseMenu', [
   state(
@@ -50,7 +52,8 @@ export class HeaderComponent {
  
 
   constructor(private orderService: OrderService,
-    private accountService:AccountService
+    private accountService:AccountService,
+    private dialog:MatDialog
     ) {}
   ngOnInit(): void {
     this.loadBasket();
@@ -150,6 +153,12 @@ export class HeaderComponent {
     this.accountService.isUserLogin$.subscribe(()=>{
       this.checkUserLogin();
     })
+  }
+  openLoginDialog():void{
+this.dialog.open(AuthDialogComponent,{
+  backdropClass:'dialog-back',
+  panelClass:'auth-dialog'
+})
   }
 
 }

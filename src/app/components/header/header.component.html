@@ -48,7 +48,12 @@
         </p>
     </div>
     <ng-container *ngIf="!isLogin">
-    <div class="user-icon" [routerLink]="[ '/auth' ]">
+    <!-- <div class="user-icon" [routerLink]="[ '/auth' ]">
+        <div class="wrapper anim">
+            <img src="../../../assets/images/user.svg">
+        </div>
+    </div> -->
+    <div class="user-icon" (click)="openLoginDialog()">
         <div class="wrapper anim">
             <img src="../../../assets/images/user.svg">
         </div>
