@@ -8,14 +8,14 @@
           <h2 *ngIf="!regVar"  class="h2-modal">Зареєструватись</h2>
           <div class="mainblock">
 
-          
+
   <ng-container *ngIf="regVar">
       <form [formGroup]="authForm" class="add" (ngSubmit)="login()">
           <div class="wrapper">
           <input formControlName="email" class="inp" name="email" type="email" placeholder="*Ваш email">
           <input formControlName="password" class="inp" name="password" type="password" placeholder="*Пароль">
           <button [disabled]="authForm.invalid" class="submiter" type="submit" mat-dialog-close ><b>Увійти в кабінет</b></button>
-          
+
           <h3 class="h3-regist" *ngIf="regVar" (click)="registShow()">Зареєструватись</h3>
           </div>
       </form>
@@ -25,21 +25,22 @@
       <ng-container *ngIf="!regVar">
       <form [formGroup]="authRegistForm" class="add" (ngSubmit)="registerUser()">
         <div class="wrapper">
-          <div style="display: flex;justify-content: space-between;align-items: center;width: 100%;"> 
+          <div style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
           <input type="text" class="name"  formControlName="userName"  name="userName" placeholder="Ваше ім'я">
           <input type="text" class="name" formControlName="userSurname" name="userSurname" placeholder="Ваше прізвище">
           </div>
           <input type="text" class="inp" formControlName="phoneNumber" name="phoneNumber" placeholder="Ваш телефон">
           <input type="email" class="inp" formControlName="userEmail" name="userEmail" placeholder="Ваш емаіл">
-          <div style="display: flex;justify-content: space-between;align-items: center;width: 100%;"> 
-          <input type="password" class="pass" formControlName="userPassword" name="userPassword" placeholder="Пароль">
-          <input type="password" class="pass" formControlName="repeatPassword" name="repeatPassword" placeholder="Повторіть пароль">
+          <div style="display: flex;justify-content: space-between;align-items: center;width: 100%;">
+          <input type="password" class="pass" (input)="checkConfirmedPassword()" formControlName="userPassword" name="userPassword" placeholder="Пароль">
+          <input type="password" class="pass" (input)="checkConfirmedPassword()" formControlName="repeatPassword" name="repeatPassword" placeholder="Повторіть пароль">
          </div>
+          <mat-error *ngIf="checkVisibilityError('repeatPassword','matchError')">Підтвердіть пароль</mat-error>
           <button type="submit" [disabled]="authRegistForm.invalid" class="submiter">Зареєструватись</button>
           <p>Уже зареєстровані?<b class="h3-regist" (click)="registShow()">Увійти</b></p>
           </div>
       </form>
-    </ng-container> 
+    </ng-container>
 </div>
 </div>
-  
+

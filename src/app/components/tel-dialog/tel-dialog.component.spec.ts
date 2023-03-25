@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetsComponent } from './sets.component';
+import { TelDialogComponent } from './tel-dialog.component';
 
-describe('SetsComponent', () => {
-  let component: SetsComponent;
-  let fixture: ComponentFixture<SetsComponent>;
+describe('TelDialogComponent', () => {
+  let component: TelDialogComponent;
+  let fixture: ComponentFixture<TelDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SetsComponent ]
+      declarations: [ TelDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SetsComponent);
+    fixture = TestBed.createComponent(TelDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

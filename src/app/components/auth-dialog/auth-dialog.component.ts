@@ -1,7 +1,7 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -9,17 +9,32 @@ import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { MatDialogRef } from '@angular/material/dialog';
+
+export  interface IRegister{
+  userName:string;
+  userSurname:string;
+  phoneNumber:string;
+  userEmail:string;
+  userPassword:string;
+  repeatPassword?:string;
+}
+
 @Component({
   selector: 'app-auth-dialog',
   templateUrl: './auth-dialog.component.html',
   styleUrls: ['./auth-dialog.component.scss']
 })
-export class AuthDialogComponent implements OnInit,OnDestroy {
+export class AuthDialogComponent implements OnInit/*,OnDestroy*/ {
   public authForm!:FormGroup;
   public authRegistForm!:FormGroup;
   public loginSubsription!:Subscription;
-  
+
   public regVar=true;
+  private registerData!:IRegister;
+  public checkPassword=false;
+
+
+
   constructor(
     private fb:FormBuilder,
     private accountService:AccountService,
@@ -29,22 +44,22 @@ export class AuthDialogComponent implements OnInit,OnDestroy {
     private toastr:ToastrService,
     private dialogRef:MatDialogRef<AuthDialogComponent>
     ){}
-  
+
   ngOnInit():void{
     this.initAuthForm();
     this.initauthRegistForm();
   }
-  ngOnDestroy():void{
+  /*ngOnDestroy():void{
   this.loginSubsription.unsubscribe();
-  }
-  
+  }*/
+
   initAuthForm(){
     this.authForm=this.fb.group({
       email:[null,[Validators.required,Validators.email]],
       password:[null,[Validators.required]]
     })
    }
-  
+
    initauthRegistForm(){
     this.authRegistForm=this.fb.group({
       userName:[null,[Validators.required]],
@@ -55,12 +70,12 @@ export class AuthDialogComponent implements OnInit,OnDestroy {
       repeatPassword:[null,[Validators.required]],
     })
    }
-  
+
    dialogClose():void{
     this.dialogRef.close();
    }
-  
-  
+
+
   login():void{
     const {email,password}=this.authForm.value;
     this.loginAsync(email,password).then(()=>{
@@ -69,7 +84,7 @@ export class AuthDialogComponent implements OnInit,OnDestroy {
       this.toastr.error(e);
     })
   }
-  
+
   async loginAsync(email:string,password:string):Promise<void>{
   const credential=await signInWithEmailAndPassword(this.auth,email,password);
   this.loginSubsription=docData(doc(this.afs,'users',credential.user.uid)).subscribe(user=>{
@@ -79,20 +94,21 @@ export class AuthDialogComponent implements OnInit,OnDestroy {
             this.router.navigate(['/cabinet']);
           } else if(user && user['role']===ROLE.ADMIN){
             this.router.navigate(['/admin']);
-          } 
+          }
           this.accountService.isUserLogin$.next(true);
   },(error)=>{
     console.log(error);
   })
   }
-  
-  
+
+
   registShow():void{
   this.regVar=!this.regVar;
   }
-  
+
   registerUser():void{
     const {userEmail,userPassword}=this.authRegistForm.value;
+this.registerData=this.authRegistForm.value;
   this.emailSignUp(userEmail,userPassword).then(()=>{
     this.toastr.success('User successfully created');
     this.regVar=!this.regVar;
@@ -104,16 +120,36 @@ export class AuthDialogComponent implements OnInit,OnDestroy {
   }
   async emailSignUp(userEmail:string,userPassword:string):Promise<any>{
     const credential=await createUserWithEmailAndPassword(this.auth,userEmail,userPassword);
-    const {userName,userSurname,phoneNumber}=this.authRegistForm.value;
+   // const {userName,userSurname,phoneNumber}=this.authRegistForm.value;
   const user={
     email:credential.user.email,
-    firstName:userName,
-    lastName:userSurname,
-    phoneNumber:phoneNumber,
+    firstName:this.registerData.userName,
+    lastName:this.registerData.userSurname,
+    phoneNumber:this.registerData.phoneNumber,
     address:'',
     orders:[],
     role:'USER'
   };
   setDoc(doc(this.afs,'users',credential.user.uid),user);
   }
+
+  checkConfirmedPassword():void{
+this.checkPassword=this.password.value===this.confirmed.value;
+if(this.password.value!==this.confirmed.value){
+this.authRegistForm.controls['repeatPassword'].setErrors({
+  matchError:'Паролі не співпадають'
+})
+}
+  }
+get password():AbstractControl{
+    return this.authRegistForm.controls['userPassword'];
+}
+  get confirmed():AbstractControl{
+    return this.authRegistForm.controls['repeatPassword'];
+  }
+checkVisibilityError(control:string,name:string):boolean | null{
+    return this.authRegistForm.controls[control].errors?.[name]
+}
+
+
 }

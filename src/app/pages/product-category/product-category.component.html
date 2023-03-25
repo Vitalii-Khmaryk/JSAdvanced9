@@ -16,9 +16,9 @@
 <div class="product-cards">
     <div class="card" *ngFor="let data of userProducts">
         <div class="image">
-        <img [src]="data.imagePath" [routerLink]="['/product/'+data.category.path,data.id]">
+        <img [src]="data.imagePath" [routerLink]="['/product-category/'+data.category.path,data.id]">
         </div>
-        <p class="name" [routerLink]="['/product/'+data.category.path,data.id]"><b>{{data.name}}</b></p>
+        <p class="name" [routerLink]="['/product-category/'+data.category.path,data.id]"><b>{{data.name}}</b></p>
         <div class="info">
             <p class="ingredients">{{data.ingredients}}</p>
             <p class="weight"><b>{{data.weight}}</b></p>

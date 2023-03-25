@@ -37,7 +37,7 @@
         </div>
     </nav>
     <div class="callback">
-        <div class="wrapper">
+        <div class="wrapper" (click)="openTelDialog()">
             <img src="../../../assets/images/phone.svg">
             <p>МИ ЗАТЕЛЕФОНУЄМО</p>
         </div>
@@ -78,7 +78,7 @@
             <div class="count" style="z-index: 50;">{{count}}</div>
         </div>
     </div>
-    
+
 </div>
 
 <ng-container *ngIf="blurStatus">
@@ -94,7 +94,7 @@
     </ng-container>
 
         <ng-container *ngIf="!empty">
-        
+
         <div class="top-basket"  *ngFor="let item of basket" >
             <div >
             <img [src]="item.imagePath" height="50px" alt="...">

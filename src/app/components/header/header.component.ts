@@ -12,6 +12,7 @@ import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import {TelDialogComponent} from "../tel-dialog/tel-dialog.component";
 
 const showCloseMenu = trigger('showCloseMenu', [
   state(
@@ -49,7 +50,7 @@ export class HeaderComponent {
   public loginUrl='';
   public loginPage='';
 
- 
+
 
   constructor(private orderService: OrderService,
     private accountService:AccountService,
@@ -88,7 +89,7 @@ export class HeaderComponent {
     });
   }
   showBasket() {
-  
+
     this.blurStatus = !this.blurStatus;
     let basketArr = JSON.parse(localStorage.getItem('basket') as string);
     if (basketArr === null) {
@@ -158,7 +159,13 @@ export class HeaderComponent {
 this.dialog.open(AuthDialogComponent,{
   backdropClass:'dialog-back',
   panelClass:'auth-dialog'
-})
+})}
+
+  openTelDialog():void{
+    this.dialog.open(TelDialogComponent,{
+      backdropClass:'dialog-back',
+      panelClass:'auth-dialog'
+    })
   }
 
 }

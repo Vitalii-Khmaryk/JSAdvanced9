@@ -1,17 +1,30 @@
 import { NgModule } from "@angular/core";
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const MATERIAL=[
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
 ]
+
 
 @NgModule({
     declarations:[],
     imports:[
-       ...MATERIAL
+       ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ],
     exports:[
-        ...MATERIAL
+        ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ]
 })
 export class SharedModule {}

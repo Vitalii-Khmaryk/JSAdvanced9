@@ -13,7 +13,7 @@ export class CabinetComponent {
   public userPass!: string;
   public dataVar = true;
   public historyVar = false;
-
+  public passVar = false;
   constructor(private router: Router, private accountService: AccountService) {}
   ngOnInit(): void {
     this.dataLoad();
@@ -36,9 +36,16 @@ export class CabinetComponent {
   data(): void {
     this.dataVar = true;
     this.historyVar = false;
+    this.passVar = false;
   }
   history(): void {
     this.dataVar = false;
     this.historyVar = true;
+    this.passVar = false;
+  }
+  changePass():void{
+    this.dataVar = false;
+    this.historyVar = false;
+    this.passVar = true;
   }
 }

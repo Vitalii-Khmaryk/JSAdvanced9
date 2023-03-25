@@ -1,0 +1,19 @@
+<div class="modal">
+  <div class="header-modal">
+    <div></div>
+    <div style="color: gray;cursor: pointer;" (click)="dialogClose()">✖</div>
+  </div>
+  <h2  class="h2-modal">МИ ЗАТЕЛЕФОНУЄМО</h2>
+  <p style="text-align: center;padding: 20px 30px;">Залиште номер телефону і наші менеджери зв'яжуться з вами</p>
+  <div class="mainblock">
+
+      <form class="add" [formGroup]="authForm" (ngSubmit)="login()">
+        <div class="wrapper">
+          <input formControlName="name" class="inp" name="name" type="text" placeholder="*Ваше ім'я">
+          <input formControlName="phoneNumber" class="inp" name="phoneNumber" type="text" placeholder="*Ваш номер телефону">
+          <button class="submiter" [disabled]="authForm.invalid" type="submit" mat-dialog-close ><b>НАДІСЛАТИ</b></button>
+        </div>
+      </form>
+
+  </div>
+</div>
