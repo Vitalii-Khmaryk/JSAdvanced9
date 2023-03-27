@@ -73,11 +73,8 @@ export class HeaderComponent {
     this.getTotalPrice();
   }
   getTotalPrice() {
-    this.total = this.basket.reduce(
-      (total: number, prod: IProductResponce) =>
-        total + prod.count * prod.price,
-      0
-    );
+    this.total = this.basket.reduce((total: number, prod: IProductResponce) =>
+        total + prod.count * prod.price,0);
     this.count = this.basket.reduce(
       (total: number, prod: IProductResponce) => total + prod.count,
       0

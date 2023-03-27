@@ -3,7 +3,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 const MATERIAL=[
@@ -17,14 +17,12 @@ const MATERIAL=[
     imports:[
        ...MATERIAL,
       FormsModule,
-      ReactiveFormsModule,
-      HttpClientModule
+      ReactiveFormsModule
     ],
     exports:[
         ...MATERIAL,
       FormsModule,
-      ReactiveFormsModule,
-      HttpClientModule
+      ReactiveFormsModule
     ]
 })
 export class SharedModule {}

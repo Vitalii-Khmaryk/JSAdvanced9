@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { FormsModule } from '@angular/forms';
-//import { ReactiveFormsModule } from '@angular/forms';
-//import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +41,7 @@ import { TelDialogComponent } from './components/tel-dialog/tel-dialog.component
     provideStorage(() => getStorage()),
     provideFirestore(()=>getFirestore()),
     provideAuth(()=>getAuth()),
+    HttpClientModule,
     SharedModule
   ],
   providers: [],

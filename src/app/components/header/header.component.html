@@ -1,38 +1,57 @@
 <div class="header">
     <nav class="wrapper">
-        <div class="header-logo" [routerLink]="[ '' ]">
+      <a [routerLink]="[ '' ]">
+        <div class="header-logo" >
             <img src="../../../assets/images/logo.svg">
         </div>
+      </a>
         <div class="category-btn">
-            <div class="header-button" [routerLink]="[ '/actions' ]">
+          <a style="text-decoration: none;color: black" [routerLink]="[ '/actions' ]">
+            <div class="header-button" >
                 <img src="../../../assets/images/nav-img-gift.svg">
                 <p>Акції</p>
             </div>
-            <div class="header-button" [routerLink]="[ '/product-category/rolls' ]">
+          </a>
+          <a style="text-decoration: none;color: black" [routerLink]="[ '/product-category/rolls' ]">
+            <div class="header-button">
                 <img src="../../../assets/images/nav-img-rolls.svg">
                 <p>Роли</p>
             </div>
-            <div class="header-button" [routerLink]="[ '/product-category/sets' ]">
+          </a>
+          <a style="text-decoration: none;color: black" [routerLink]="[ '/product-category/sets' ]">
+          <div class="header-button" >
                 <img src="../../../assets/images/nav-img-sets.svg">
                 <p>Сети</p>
             </div>
-            <div class="header-button" [routerLink]="[ '/product-category/drinks' ]">
+          </a>
+          <a style="text-decoration: none;color: black" [routerLink]="[ '/product-category/drinks' ]">
+            <div class="header-button" >
                 <img src="../../../assets/images/nav-img-drinks.svg">
                 <p>Напої</p>
             </div>
-            <div class="header-button" [routerLink]="[ '/product-category/sauces' ]">
+          </a>
+          <a style="text-decoration: none;color: black" [routerLink]="[ '/product-category/sauces' ]">
+          <div class="header-button" >
                 <img src="../../../assets/images/icon.svg">
                 <p>Соуси</p>
             </div>
-            <div class="header-button burger-btn" (click)="showSloceMenu()">
+          </a>
+
+          <div class="header-button burger-btn" (click)="showSloceMenu()">
                 <img src="../../../assets/images/new_Hamburger_icon.svg.png" class="burger">
             </div>
             <div [@showCloseMenu]="status ? 'show' : 'close'" class="modal-menu">
                 <div class="close" (click)="showSloceMenu()">✖</div>
-                <div class="link" [routerLink]="[ '/dostavka-ta-oplata' ]" (click)="showSloceMenu()"><b>Доставка та
+              <a style="text-decoration: none;color: black" [routerLink]="[ '/dostavka-ta-oplata' ]">
+              <div class="link" (click)="showSloceMenu()"><b>Доставка та
                         оплата</b></div>
-                <div class="link" [routerLink]="[ '/about-us' ]" (click)="showSloceMenu()"><b>Про нас</b></div>
-                <div class="link" [routerLink]="[ '/actions' ]" (click)="showSloceMenu()"><b>Акції</b></div>
+              </a>
+              <a style="text-decoration: none;color: black" [routerLink]="[ '/about-us' ]">
+              <div class="link" (click)="showSloceMenu()"><b>Про нас</b></div>
+              </a>
+              <a style="text-decoration: none;color: black" [routerLink]="[ '/actions' ]">
+                <div class="link" (click)="showSloceMenu()"><b>Акції</b></div>
+              </a>
             </div>
         </div>
     </nav>
@@ -60,7 +79,8 @@
     </div>
     </ng-container>
     <ng-container *ngIf="isLogin">
-    <div class="user-icon" [routerLink]="[ '/'+loginUrl ]">
+      <a style="text-decoration: none;color: black" [routerLink]="[ '/'+loginUrl ]">
+    <div class="user-icon" >
         <div class="wrapper anim" style="display: flex;flex-direction: column;">
             <div>
             <img src="../../../assets/images/user.svg">
@@ -68,6 +88,7 @@
             <h6>{{loginPage}}</h6>
         </div>
     </div>
+      </a>
     </ng-container>
 
 
@@ -89,7 +110,9 @@
         <div class="empty">
                 <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="...">
                 <h2>Кошик порожній</h2>
-                <button class="catalogBtn" (click)="catalog()" [routerLink]="[ '' ]">ПЕРЕЙТИ ДО КАТАЛОГУ</button>
+          <a style="text-decoration: none;color: black" [routerLink]="[ '' ]">
+                <button class="catalogBtn" (click)="catalog()" >ПЕРЕЙТИ ДО КАТАЛОГУ</button>
+          </a>
         </div>
     </ng-container>
 

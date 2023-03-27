@@ -23,9 +23,15 @@ export class CabinetComponent {
     const currentUser = JSON.parse(
       localStorage.getItem('currentUser') as string
     );
-    this.userEmail = currentUser.email;
+    if(currentUser && currentUser.email) {
+      this.userEmail = currentUser.email;
+    }
+    if(currentUser && currentUser.fullName) {
     this.userName = currentUser.fullName;
+    }
+    if(currentUser && currentUser.password) {
     this.userPass = currentUser.password;
+    }
   }
 
   logout(): void {

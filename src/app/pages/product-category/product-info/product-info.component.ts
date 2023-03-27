@@ -19,6 +19,7 @@ constructor(
 ngOnInit():void{
   this.activatedRoute.data.subscribe(response=>{
     this.currentProduct=response['productInfo'];
+    console.log(this.currentProduct);
   })
 
 }

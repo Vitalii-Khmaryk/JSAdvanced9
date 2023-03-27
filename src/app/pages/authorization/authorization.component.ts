@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
+
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -33,7 +34,9 @@ ngOnInit():void{
   this.initauthRegistForm();
 }
 ngOnDestroy():void{
-this.loginSubsription.unsubscribe();
+  if (this.loginSubsription){
+    this.loginSubsription.unsubscribe();
+  }
 }
 
 initAuthForm(){
@@ -74,7 +77,7 @@ localStorage.setItem('currentUser',JSON.stringify(currentUser));
           this.router.navigate(['/cabinet']);
         } else if(user && user['role']===ROLE.ADMIN){
           this.router.navigate(['/admin']);
-        } 
+        }
         this.accountService.isUserLogin$.next(true);
 },(error)=>{
   console.log(error);
