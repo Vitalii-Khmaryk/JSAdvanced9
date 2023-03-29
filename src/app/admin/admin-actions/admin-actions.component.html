@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let data of adminActions">
-                <td class="date">{{data.date | date: 'dd.MM.YYYY'}}</td>
+                <td class="date">{{data.date}}</td>
                 <td class="name">{{data.name}}</td>
                 <td class="title">{{data.title}}</td>
                 <td class="description">{{data.description | slice:0:30}}

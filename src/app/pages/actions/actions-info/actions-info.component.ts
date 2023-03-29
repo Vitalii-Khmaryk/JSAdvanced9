@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IActionResponse } from 'src/app/shared/interfaces/action/action.interface';
 
+
+
 @Component({
   selector: 'app-actions-info',
   templateUrl: './actions-info.component.html',
@@ -17,4 +19,5 @@ ngOnInit():void{
    this.currentAction=response['actionsInfo'];
   })
 }
+
 }

@@ -20,9 +20,13 @@ export class ActionsComponent {
   }
 
   getActions(): void {
-    this.actionService.getAll().subscribe(data => {
-      this.actions = data;
+    this.actionService.getAllFirebase().subscribe(data => {
+      this.actions = data as IActionResponse[];
     })
+   /* this.actionService.getAll().subscribe(data => {
+      this.actions = data;
+      console.log(this.actions[0])
+    })*/
   }
 
 }

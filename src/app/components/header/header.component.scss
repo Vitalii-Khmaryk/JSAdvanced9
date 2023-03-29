@@ -50,7 +50,7 @@
             align-items: center;
             position: relative;
 
-           
+
 
             .burger-btn {
                 width: 68px;
@@ -201,9 +201,9 @@
                 font-size: 15px;
             }
         }
-       
+
     }
-   
+
 }
 
 .header-button {
@@ -228,7 +228,7 @@
   .anim:hover {
     animation: slideIn 1s forwards;
   }
-  
+
   @keyframes slideIn {
     20% {
       border-top: 3px solid aqua;
@@ -383,4 +383,17 @@
 
 .basket:hover::after {
     height: 10px;
+}
+
+.addBlock{
+  width: 50px;
+  font-family: 'RotondaC';
+  border: 1px solid $main-color;
+  font-size: 12px;
+  height: 30px;
+  background-color: $main-color;
+  border-radius: 5px;
+}
+.addBlock:hover{
+  background-color: white;
 }

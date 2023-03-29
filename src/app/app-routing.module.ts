@@ -29,7 +29,9 @@ const routes: Routes = [
   {path:'cabinet',canActivate:[AuthGuard],
     loadChildren:()=>import('./pages/cabinet/cabinet.module').then(m=> m.CabinetModule)
   },
-
+  {path:'offerta',
+    loadChildren:()=>import('./pages/offerta/offerta.module').then(m=> m.OffertaModule)
+  },
 
   {path:'admin',canActivate:[AuthGuard],
   loadChildren:()=>import('./admin/admin.module').then(m=> m.AdminModule)

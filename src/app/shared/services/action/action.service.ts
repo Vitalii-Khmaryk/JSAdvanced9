@@ -4,38 +4,46 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IActionRequest, IActionResponse } from '../../interfaces/action/action.interface';
+import {Firestore, CollectionReference, doc, updateDoc, deleteDoc,addDoc,docData, collectionData} from "@angular/fire/firestore";
+import {DocumentData,collection} from "@firebase/firestore";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActionService implements Resolve<IActionResponse> {
+export class ActionService implements Resolve<Observable<DocumentData>> {
 
   private url = environment.BACKEND_URL;
   private api = { actions: `${this.url}/actions` }
-
+  private categoryCollection!:CollectionReference<DocumentData>;
   constructor(
-    private http: HttpClient
-  ) { }
-
-  getAll(): Observable<IActionResponse[]> {
-    return this.http.get<IActionResponse[]>(this.api.actions);
-  }
-  getOne(id:number):Observable<IActionResponse>{
-    return this.http.get<IActionResponse>(`${this.api.actions}/${id}`);
+    private http: HttpClient,
+  private afs:Firestore
+  ) {
+    this.categoryCollection=collection(this.afs,'actions');
   }
 
-  createAction(action: IActionRequest): Observable<IActionResponse> {
-    return this.http.post<IActionResponse>(this.api.actions, action);
+  getAllFirebase(){
+    return collectionData(this.categoryCollection, {idField:'id'});
   }
-
-  updateAction(action: IActionRequest, id: number): Observable<IActionResponse> {
-    return this.http.patch<IActionResponse>(`${this.api.actions}/${id}`, action);
+  getOneFirebase(id:string){
+    const categoryDocumentReference=doc(this.afs,`actions/${id}`);
+   return docData(categoryDocumentReference, {idField:'id'});
   }
-
-  deleteAction(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.api.actions}/${id}`);
+  resolve(route:ActivatedRouteSnapshot):Observable<DocumentData>{
+    const categoryDocumentReference=doc(this.afs,`actions/${route.paramMap.get('id')}`);
+    return docData(categoryDocumentReference, {idField:'id'});
   }
-  resolve(route:ActivatedRouteSnapshot):Observable<IActionResponse>{
-    return this.http.get<IActionResponse>(`${this.api.actions}/${route.paramMap.get('id')}`);
+  createFirebase(action: IActionRequest) {
+    return addDoc(this.categoryCollection,action);
+  }
+  updateFirebase(action: IActionRequest, id: string){
+    const categoryDocumentReference=doc(this.afs,`actions/${id}`);
+    return updateDoc(categoryDocumentReference,{...action});
+  }
+  deleteFirebase(id:string){
+    const categoryDocumentReference=doc(this.afs,`actions/${id}`);
+    return deleteDoc(categoryDocumentReference);
   }
 }

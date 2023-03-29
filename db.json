@@ -23,6 +23,14 @@
       "description": "При оформленні замовлення вкажіть промокод “День народження” та отримайте “Запечений сет” безкоштовно до Вашого замовлення.\nТермін дії акції – День народження плюс один день до та після свята.\nЦя акція починає діяти при мінімальній сумі замовлення 750 грн.\nДля отримання подарунку іменинник має показати кур’єру оригінал документу, що підтверджує його дату народження.\nЦя акція не поєднується з іншими акціями.",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-283e1.appspot.com/o/images%2F5-tyj-v-podarunok-.jpg?alt=media&token=3f99b6df-7a93-489d-b2ab-1fcf3bd19b53",
       "id": 3
+    },
+    {
+      "date": "2023-03-27T15:58:48.958Z",
+      "name": "50% знижки на \"Рол тижня\"",
+      "title": "50% знижки на \"Рол тижня\"",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню.\n“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 300 грн.\nЦя акція не поєднується з іншими акціями.\n",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-283e1.appspot.com/o/images%2Fimgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg?alt=media&token=434a47ae-25b1-4bf6-80d0-55b3c7506c00",
+      "id": 4
     }
   ],
   "categories": [
@@ -49,6 +57,12 @@
       "path": "sauces",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-63e7f.appspot.com/o/images%2Ficon.svg?alt=media&token=3e74d65c-a0d5-4ae1-972a-fc2622f56190",
       "id": 4
+    },
+    {
+      "name": "qqqq",
+      "path": "wwwwww",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-283e1.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=3f5c3d15-ea82-4ead-9170-11479a5ed4a5",
+      "id": 5
     }
   ],
   "products": [

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'',component:ActionsComponent},
   {path: ':id', component: ActionsInfoComponent,resolve:{
       actionsInfo:ActionService
-    }}
+  }}
 ];
 
 @NgModule({

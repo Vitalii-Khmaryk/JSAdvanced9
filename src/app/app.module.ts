@@ -23,6 +23,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { SharedModule } from './shared/shared.module';
 import { TelDialogComponent } from './components/tel-dialog/tel-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { TelDialogComponent } from './components/tel-dialog/tel-dialog.component
     FooterComponent,
     HomeComponent,
     AuthDialogComponent,
-     TelDialogComponent
+     TelDialogComponent,
+
   ],
   imports: [
     BrowserModule,

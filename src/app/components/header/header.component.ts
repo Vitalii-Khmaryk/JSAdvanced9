@@ -50,9 +50,8 @@ export class HeaderComponent {
   public loginUrl='';
   public loginPage='';
 
-
-
-  constructor(private orderService: OrderService,
+  constructor(
+    private orderService: OrderService,
     private accountService:AccountService,
     private dialog:MatDialog
     ) {}
@@ -86,7 +85,6 @@ export class HeaderComponent {
     });
   }
   showBasket() {
-
     this.blurStatus = !this.blurStatus;
     let basketArr = JSON.parse(localStorage.getItem('basket') as string);
     if (basketArr === null) {
@@ -107,25 +105,52 @@ export class HeaderComponent {
     console.log(this.basket);
     let basketArr = JSON.parse(localStorage.getItem('basket') as string);
     if (basketArr === null) {
+      this.orderService.changeBasket.next(true);
       console.log('масив не існує');
     } else if (basketArr.length === 0) {
       this.empty = true;
       this.count = 0;
       this.total = 0;
       console.log('пусто');
+      this.orderService.changeBasket.next(true);
     } else {
       console.log('наповнений');
       this.empty = false;
+      this.orderService.changeBasket.next(true);
     }
   }
 
-  productCount(product: IProductResponce, value: boolean): void {
+  productCount(item: IProductResponce, value: boolean): void {
     if (value) {
-      ++product.count;
-    } else if (!value && product.count > 1) {
-      --product.count;
+      ++item.count;
+    } else if (!value && item.count > 1) {
+      --item.count;
     }
   }
+
+  addToBasket(item:IProductResponce):void{
+    item.count=1;
+    let basket:Array<IProductResponce> = [];
+    if (localStorage.length>0 && localStorage.getItem('basket')) {
+      basket=JSON.parse(localStorage.getItem('basket') as string);
+      if (basket.some(prod=>prod.id===item.id)) {
+        const index=basket.findIndex(prod=>prod.id===item.id);
+        basket[index].count+=item.count;
+      }
+      else{
+        basket.push(item);
+      }
+    }
+    else{
+      basket.push(item);
+    }
+    localStorage.setItem('basket',JSON.stringify(basket));
+    item.count=1;
+    this.orderService.changeBasket.next(true);
+  }
+
+
+
   catalog(): void {
     this.blurStatus = false;
   }

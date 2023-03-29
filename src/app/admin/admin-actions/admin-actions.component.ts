@@ -5,6 +5,8 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 
+
+
 @Component({
   selector: 'app-admin-actions',
   templateUrl: './admin-actions.component.html',
@@ -16,13 +18,13 @@ export class AdminActionsComponent {
 
   public actionForm!: FormGroup;
 
-  public editId!: number;
+  public editId!: number | string;
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
 
   public addActionStatus = false;
-
+public dd!:any;
   constructor(
     private actionService: ActionService,
     private fb: FormBuilder,
@@ -36,8 +38,10 @@ export class AdminActionsComponent {
   }
 
   initActionForm(): void {
+    const d=new Date();
+    const dd=`${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()}`
     this.actionForm = this.fb.group({
-      date: [new Date(), Validators.required],
+      date: dd,
       name: [null, Validators.required],
       title: [null, Validators.required],
       description: [null, Validators.required],
@@ -45,9 +49,11 @@ export class AdminActionsComponent {
     })
   }
 
+
+
   getActions(): void {
-    this.actionService.getAll().subscribe(data => {
-      this.adminActions = data;
+    this.actionService.getAllFirebase().subscribe(data => {
+      this.adminActions = data as IActionResponse[];
     })
   }
 
@@ -63,12 +69,12 @@ export class AdminActionsComponent {
 
   saveNewAction(): void {
     if (this.editStatus) {
-      this.actionService.updateAction(this.actionForm.value, this.editId).subscribe(() => {
+      this.actionService.updateFirebase(this.actionForm.value, this.editId as string).then(() => {
         this.getActions();
         this.toastr.success('The product has been successfully changed');
       })
     } else {
-      this.actionService.createAction(this.actionForm.value).subscribe(() => {
+      this.actionService.createFirebase(this.actionForm.value).then(() => {
         this.getActions();
         this.toastr.success('The product has been created successfully');
       })
@@ -89,12 +95,12 @@ export class AdminActionsComponent {
       imagePath: action.imagePath
     });
     this.editStatus = true;
-    this.editId = action.id;
+    this.editId = action.id as number;
     this.isUploaded = true;
   }
 
   deleteAction(action: IActionResponse): void {
-    this.actionService.deleteAction(action.id).subscribe(() => {
+    this.actionService.deleteFirebase(action.id as string).then(() => {
       this.getActions();
       this.toastr.success('The action has been successfully removed');
     });

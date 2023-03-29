@@ -1,0 +1,74 @@
+@import '../../shared/styles/variables';
+$mainCol: #91c4f0;
+$scroll: #dae8f5;
+$lightText: #707070;
+$lightBorder: #bdbbbb;
+$lighterBorder: #d6d1d1a9;
+$darkText: #252525;
+@mixin respond($breakpoint) {
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 1240px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 780px) {
+      @content;
+    }
+  }
+}
+
+%logoHeader {
+  border-top: 7px solid $mainCol;
+  margin: 140px auto 20px;
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 10px 5px;
+  text-align: center;
+  @include respond(mobile) {
+    font-size: 25px;
+    margin-top: 100px;
+  }
+}
+.header {
+  font-family: 'RotondaC';
+  width: 220px;
+  @extend %logoHeader;
+}
+.offerta {
+  font-family: 'RotondaC';
+  width: 70%;
+  margin: 10px auto;
+  @include respond(tablet) {
+    width: 80%;
+  }
+  @include respond(mobile) {
+    width: 90%;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: bolder;
+    color: $darkText;
+    @include respond(mobile) {
+      font-size: 20px;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bolder;
+    color: $darkText;
+    @include respond(mobile) {
+      font-size: 15px;
+    }
+  }
+  p {
+    font-size: 16px;
+    color: $lightText;
+    line-height: 30px;
+    @include respond(mobile) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}

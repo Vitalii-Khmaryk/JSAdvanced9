@@ -34,7 +34,7 @@ if (value) {
   }
 }
 addToBasket(product:IProductResponce):void{
-  let basket:Array<IProductResponce>=[];
+  let basket:Array<IProductResponce> = [];
   if (localStorage.length>0 && localStorage.getItem('basket')) {
     basket=JSON.parse(localStorage.getItem('basket') as string);
     if (basket.some(prod=>prod.id===product.id)) {

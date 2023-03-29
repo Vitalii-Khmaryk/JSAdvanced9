@@ -4,42 +4,58 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { IProductRequest, IProductResponce } from '../../interfaces/product/product.interface';
+import {Firestore, CollectionReference, doc, updateDoc, deleteDoc,addDoc,docData, collectionData} from "@angular/fire/firestore";
+import {collection, DocumentData,getDocs,query,where} from "@firebase/firestore";
+
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService implements Resolve<IProductResponce> {
+export class ProductService implements Resolve<Observable<DocumentData>> {
 
   private url = environment.BACKEND_URL;
   private api = { products: `${this.url}/products` }
-
+  private productCollection!:CollectionReference<DocumentData>;
   constructor(
-    private http: HttpClient
-  ) { }
-
-  getAll(): Observable<IProductResponce[]> {
-    return this.http.get<IProductResponce[]>(this.api.products);
-  }
-  getOne(id:number):Observable<IProductResponce>{
-    return this.http.get<IProductResponce>(`${this.api.products}/${id}`);
+    private http: HttpClient,
+    private afs:Firestore
+  ) {
+    this.productCollection=collection(this.afs,'products');
   }
 
-  getAllByCategory(name: string): Observable<IProductResponce[]>{
-    return this.http.get<IProductResponce[]>(`${this.api.products}?category.path=${name}`);
+  getAllFirebase(){
+    return collectionData(this.productCollection, {idField:'id'});
+  }
+  resolve(route:ActivatedRouteSnapshot):Observable<DocumentData>{
+    const productDocumentReference=doc(this.afs,`products/${route.paramMap.get('id')}`);
+    return docData(productDocumentReference, {idField:'id'});
+  }
+  getOneFirebase(id:string){
+    const productDocumentReference=doc(this.afs,`products/${id}`);
+    return docData(productDocumentReference, {idField:'id'});
+  }
+  async getAllByCategoryFirebase(name: string) {
+    const productsCollectionRef =collection(this.afs,'products');
+    const q=query(productsCollectionRef,where('category.path','==',name));
+    const querySnapshot=await getDocs(q);
+    const products=querySnapshot.docs.map(doc=>({id:doc.id,...doc.data()}));
+    console.log(products);
+    return products;
+  }
+  createFirebase(product: IProductRequest) {
+    return addDoc(this.productCollection,product);
+  }
+  updateFirebase(product: IProductRequest, id: string){
+    const productDocumentReference=doc(this.afs,`products/${id}`);
+    return updateDoc(productDocumentReference,{...product});
+  }
+  deleteFirebase(id:string){
+    const productDocumentReference=doc(this.afs,`products/${id}`);
+    return deleteDoc(productDocumentReference);
   }
 
-  createProduct(product: IProductRequest): Observable<IProductResponce> {
-    return this.http.post<IProductResponce>(this.api.products, product);
-  }
-
-  updateProduct(product: IProductRequest, id: number): Observable<IProductResponce> {
-    return this.http.patch<IProductResponce>(`${this.api.products}/${id}`, product);
-  }
-
-  deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.api.products}/${id}`)
-  }
-  resolve(activatedRouteSnapshot:ActivatedRouteSnapshot):Observable<IProductResponce>{
-    return this.http.get<IProductResponce>(`${this.api.products}/${activatedRouteSnapshot.paramMap.get('id')}`);
-  }
 }

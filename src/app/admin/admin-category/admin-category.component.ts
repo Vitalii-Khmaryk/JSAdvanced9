@@ -16,7 +16,7 @@ export class AdminCategoryComponent {
 
   public categoryForm!: FormGroup;
 
-  public editId!: number;
+  public editId!: number | string;
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
@@ -44,9 +44,12 @@ export class AdminCategoryComponent {
   }
 
   getCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponce[];
     })
+   /* this.categoryService.getAll().subscribe(data => {
+      this.adminCategories = data;
+    })*/
   }
 
   addCategory(): void {
@@ -55,15 +58,24 @@ export class AdminCategoryComponent {
 
   saveNewCategory(): void {
     if (this.editStatus) {
-      this.categoryService.updateCategory(this.categoryForm.value, this.editId).subscribe(() => {
+      this.categoryService.updateFirebase(this.categoryForm.value, this.editId as string).then(() => {
         this.getCategories();
         this.toastr.success('The product has been successfully changed');
       })
+     /* this.categoryService.updateCategory(this.categoryForm.value, this.editId as number).subscribe(() => {
+        this.getCategories();
+        this.toastr.success('The product has been successfully changed');
+      })*/
+
     } else {
-      this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
         this.getCategories();
         this.toastr.success('The product has been created successfully');
       })
+      /*this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
+        this.getCategories();
+        this.toastr.success('The product has been created successfully');
+      })*/
     }
     this.categoryForm.reset();
     this.addCategoryStatus = false;
@@ -80,12 +92,16 @@ export class AdminCategoryComponent {
       imagePath: category.imagePath
     });
     this.editStatus = true;
-    this.editId = category.id;
+    this.editId = category.id as number;
     this.isUploaded = true;
   }
 
   deleteCategory(category: ICategoryResponce): void {
-    this.categoryService.deleteCategory(category.id).subscribe(() => {
+   /* this.categoryService.deleteCategory(category.id as number).subscribe(() => {
+      this.getCategories();
+      this.toastr.success('The product has been successfully removed');
+    });*/
+    this.categoryService.deleteFirebase(category.id as string).then(() => {
       this.getCategories();
       this.toastr.success('The product has been successfully removed');
     });

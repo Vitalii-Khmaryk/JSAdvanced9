@@ -67,11 +67,7 @@
         </p>
     </div>
     <ng-container *ngIf="!isLogin">
-    <!-- <div class="user-icon" [routerLink]="[ '/auth' ]">
-        <div class="wrapper anim">
-            <img src="../../../assets/images/user.svg">
-        </div>
-    </div> -->
+
     <div class="user-icon" (click)="openLoginDialog()">
         <div class="wrapper anim">
             <img src="../../../assets/images/user.svg">
@@ -128,6 +124,9 @@
                 <input type="text" name="num" disabled style="background-color: white;" class="count" [value]="item.count">
                 <button class="plus" (click)="productCount(item,true)">+</button>
             </div>
+          <div >
+          <button class="addBlock" (click)="addToBasket(item)">Додати</button>
+          </div>
             <div class="sum"><b>{{item.price * item.count}}</b> грн</div>
             <div class="trash" (click)="localDelete(item)">
                 <img src="../../../assets/images/trash.svg" alt="">
@@ -141,7 +140,7 @@
                 Сума: <b>{{total}}</b> грн
             </div>
             <div>
-                <button class="orderbtn">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+                <button class="orderbtn"   >ОФОРМИТИ ЗАМОВЛЕННЯ</button>
             </div>
         </div>
     </div>

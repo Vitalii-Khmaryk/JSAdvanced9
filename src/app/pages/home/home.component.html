@@ -71,13 +71,13 @@
             <p class="weight"><b>{{data.weight}}</b></p>
         </div>
         <div class="ordering">
-            <p class="price"><b>{{data.price}} грн</b></p>
+            <p class="price"><b>{{data.price*data.count}} грн</b></p>
             <div class="select-quantity">
-                <button class="minus">-</button>
-                <input type="text" name="num" disabled style="background-color: white;padding: 0 10px;" class="count" value="1">
-                <button class="plus">+</button>
+                <button (click)="productCount(data,false)" class="minus">-</button>
+                <input type="text" name="num" disabled style="background-color: white;padding: 0 10px;" class="count" [value]="data.count">
+                <button (click)="productCount(data,true)" class="plus">+</button>
             </div>
-            <button class="order"><b>ЗАМОВИТИ</b></button>
+            <button class="order" (click)="addToBasket(data)"><b>ЗАМОВИТИ</b></button>
         </div>
     </div>
 </div>
